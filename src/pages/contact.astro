@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+<Base title="Kapcsolat – TwoAway" description="Írj nekünk, és 24–48 órán belül válaszolunk.">
+<Navbar />
+<main class="container py-12">
+<h1 class="text-3xl font-bold mb-6">Kapcsolat</h1>
+<form class="grid gap-4 max-w-xl" name="contact" method="POST" data-netlify="true">
+<input type="hidden" name="form-name" value="contact" />
+<label class="grid gap-2">
+<span>Név</span>
+<input name="name" required class="rounded-xl border px-4 py-2" />
+</label>
+<label class="grid gap-2">
+<span>E‑mail</span>
+<input type="email" name="email" required class="rounded-xl border px-4 py-2" />
+</label>
+<label class="grid gap-2">
+<span>Üzenet</span>
+<textarea name="message" rows="5" required class="rounded-xl border px-4 py-2"></textarea>
+</label>
+<button class="mt-2 inline-flex rounded-2xl bg-brand px-5 py-3 text-white hover:bg-brand-dark" type="submit">Küldés</button>
+<p class="text-sm text-slate-500">Vagy írj közvetlenül: <a class="underline" href="mailto:hello@twoaway.hu">hello@twoaway.hu</a></p>
+</form>
+</main>
+<Footer />
+</Base>

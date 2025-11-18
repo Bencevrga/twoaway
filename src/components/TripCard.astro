@@ -1,0 +1,15 @@
+---
+const { title, days, price, image, href = '#' } = Astro.props;
+---
+<article class="group rounded-2xl border border-slate-200 overflow-hidden hover:shadow-md transition">
+<a href={href} class="block">
+<div class="aspect-[4/3] overflow-hidden">
+<img src={image} alt={title} class="w-full h-full object-cover group-hover:scale-105 transition" loading="lazy" />
+</div>
+<div class="p-4 space-y-2">
+<h3 class="text-lg font-semibold">{title}</h3>
+<p class="text-slate-600 text-sm">{days} nap • kb. {price} EUR/fő</p>
+<span class="inline-flex text-brand text-sm">Részletek →</span>
+</div>
+</a>
+</article>

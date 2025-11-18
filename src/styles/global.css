@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Alap tipográfia */
+:root {
+--ring: theme(colors.brand.DEFAULT);
+}
+
+
+.prose a { @apply text-brand underline-offset-4 hover:underline; }
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8 text-center;
+}
+
+#tw-header.scrolled {
+  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.55);
+  height: 64px;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+#tw-header.scrolled nav {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
