@@ -2,38 +2,34 @@
 import Base from "../layouts/Base.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
-import TripCard from "../components/TripCard.astro";
-import CTA from "../components/CTA.astro";
-import Footer from "../components/Footer.astro";
 import TripList from "../components/TripList.astro";
-import HowItWorks from "../components/HowItWorks.astro";
 import AboutMini from "../components/AboutMini.astro";
+import HowItWorks from "../components/HowItWorks.astro";
 import WhyUs from "../components/WhyUs.astro";
 import PremiumPricing from "../components/PremiumPricing.astro";
 import Testimonials from "../components/Testimonials.astro";
 import SocialSection from "../components/SocialSection.astro";
-
-const trips = [
-{ title: 'Milánó + Comói-tó', days: 3, price: 220, image: 'https://images.unsplash.com/photo-1523905330026-b8bd1f5f320e' },
-{ title: 'London low‑cost', days: 4, price: 280, image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e' },
-{ title: 'Mallorca beach break', days: 5, price: 350, image: 'https://images.unsplash.com/photo-1470214203634-e436a8848e23' }
-];
 ---
-<Base title="TwoAway – Utazás okosan" description="Egyedi útitervek, valós árak, kényelmes szervezés.">
-<Navbar />
 
+<Base
+  title="TwoAway – Utazás okosan"
+  description="Egyedi útitervek, valós árak, kényelmes szervezés."
+>
+  <Navbar />
 
-<Hero img="/img/hero.jpg" />
+  <Hero img="/img/hero.jpg" />
 
-<TripList />
+  <TripList />
 
-<AboutMini />
+  <AboutMini />
 
-<HowItWorks />
-<WhyUs />
-<PremiumPricing />
+  <HowItWorks />
 
-<Testimonials />
-<SocialSection />
-<Footer />
+  <WhyUs />
+
+  <PremiumPricing />
+
+  <Testimonials />
+
+  <SocialSection />
 </Base>

@@ -1,31 +1,21 @@
 ---
-const { title = 'TwoAway – Utazás okosan', description = 'Egyedi útitervek, valós árak, kényelmes szervezés.', ogImage = '/og-twoaway.jpg' } = Astro.props;
+const {
+  title = "TwoAway – Utazás okosan",
+  description = "Egyedi útitervek, valós árak, kényelmes szervezés.",
+} = Astro.props;
 ---
-<html lang="hu">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{title}</title>
-<meta name="description" content={description} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={ogImage} />
-<link rel="icon" href="/favicon.svg" />
-</head>
-<body class="min-h-dvh text-slate-900 antialiased relative">
-  <!-- Fix háttérkép, semmi overlay -->
-  <div class="fixed inset-0 -z-10">
-    <img
-      src={`${Base}img/hero.jpg`}
-      alt="TwoAway hero"
-      class="w-full h-full object-cover"
-      loading="eager"
-/   >
-  </div>
 
-  <!-- Tartalom -->
-  <div class="relative">
+<!DOCTYPE html>
+<html lang="hu" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+  </head>
+
+  <body class="bg-white text-slate-900">
     <slot />
-  </div>
-</body>
+  </body>
 </html>
