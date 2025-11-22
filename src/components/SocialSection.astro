@@ -1,15 +1,16 @@
 ---
 const base = import.meta.env.BASE_URL;
-const tiktokUrl = "https://www.tiktok.com/@twoaway"; 
+
+const tiktokUrl = "https://www.tiktok.com/@twoaway";
 const instagramUrl = "https://www.instagram.com/p/XXXXXXX/";
 
-const tiktokImage = "/images/twoaway-tiktok-post.jpg";
-const instagramImage = "/images/twoaway-instagram-post.jpg";
+// Tegyük az asseteket a public/img mappába
+const tiktokImage = `${base}img/twoaway-tiktok-post.jpg`;
+const instagramImage = `${base}img/twoaway-instagram-post.jpg`;
 ---
 
 <section id="social" class="w-full bg-white py-20">
   <div class="container mx-auto space-y-12 text-center">
-    
     <!-- Fejléc -->
     <div class="space-y-4 max-w-2xl mx-auto">
       <p class="inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-1 text-xs font-semibold text-sky-700">
@@ -26,7 +27,6 @@ const instagramImage = "/images/twoaway-instagram-post.jpg";
 
     <!-- Social kártyák -->
     <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
-
       <!-- TikTok -->
       <a
         href={tiktokUrl}
@@ -48,7 +48,6 @@ const instagramImage = "/images/twoaway-instagram-post.jpg";
           </span>
         </div>
 
-        <!-- TikTok poszt keret -->
         <div class="rounded-3xl overflow-hidden border border-slate-200 bg-black aspect-square">
           <img
             src={tiktokImage}
@@ -89,7 +88,6 @@ const instagramImage = "/images/twoaway-instagram-post.jpg";
           </span>
         </div>
 
-        <!-- Instagram poszt keret -->
         <div class="rounded-3xl overflow-hidden border border-slate-200 bg-black aspect-square">
           <img
             src={instagramImage}
@@ -110,7 +108,6 @@ const instagramImage = "/images/twoaway-instagram-post.jpg";
       </a>
     </div>
 
-    <!-- Alsó mini sor -->
     <p class="text-xs md:text-sm text-slate-400 pt-4">
       TikTok: @twoaway • Instagram: @twoaway
     </p>

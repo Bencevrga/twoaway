@@ -9,14 +9,15 @@ import WhyUs from "../components/WhyUs.astro";
 import PremiumPricing from "../components/PremiumPricing.astro";
 import Testimonials from "../components/Testimonials.astro";
 import SocialSection from "../components/SocialSection.astro";
-
-const base = import.meta.env.BASE_URL;
 ---
 
-<Base title="TwoAway – Utazás okosan" description="Egyedi útitervek, valós árak, kényelmes szervezés.">
+<Base
+  title="TwoAway – Utazás okosan"
+  description="Egyedi útitervek, valós árak, kényelmes szervezés."
+>
   <Navbar />
 
-  <Hero img={`${base}img/hero.jpg`} />
+  <Hero />
 
   <TripList />
 
