@@ -2,40 +2,46 @@
 const base = import.meta.env.BASE_URL;
 
 const tiktokUrl = "https://www.tiktok.com/@twoaway";
-const instagramUrl = "https://www.instagram.com/p/XXXXXXX/";
+const instagramUrl = "https://www.instagram.com/twoaway";
 
-// Tegyük az asseteket a public/img mappába
+// Thumbnail képek
 const tiktokImage = `${base}img/twoaway-tiktok-post.jpg`;
 const instagramImage = `${base}img/twoaway-instagram-post.jpg`;
 ---
 
-<section id="social" class="w-full bg-white py-20">
-  <div class="container mx-auto space-y-12 text-center">
+<section id="social" class="w-full py-24 relative">
+  <div class="container mx-auto space-y-14 text-center">
+
     <!-- Fejléc -->
     <div class="space-y-4 max-w-2xl mx-auto">
-      <p class="inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-1 text-xs font-semibold text-sky-700">
-        <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+      <p class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-xl px-4 py-1 text-xs font-semibold text-sky-200 border border-white/20">
+        <span class="w-2 h-2 rounded-full bg-sky-400"></span>
         Kövess minket utazós tartalmakért
       </p>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
+
+      <h2 class="text-3xl md:text-4xl font-bold text-white drop-shadow-sm">
         TikTokon és Instagramon is velünk utazhatsz
       </h2>
-      <p class="text-sm md:text-base text-slate-600 leading-relaxed">
-        Valós árak, friss ajánlatok és kulisszák mögötti tartalmak minden nap.
+
+      <p class="text-sm md:text-base text-white/70 leading-relaxed">
+        Valós árak, last minute ajánlatok és kulisszák minden nap — elsőként nálunk.
       </p>
     </div>
 
-    <!-- Social kártyák -->
-    <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
-      <!-- TikTok -->
-      <a
+    <!-- Kártyák -->
+    <div class="grid gap-10 md:grid-cols-2 max-w-5xl mx-auto">
+
+      <!-- TikTok kártya -->
+      <a 
         href={tiktokUrl}
         target="_blank"
-        class="group block rounded-[32px] bg-white border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition"
+        class="group block rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/40 
+               p-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition relative"
       >
+        <!-- Header -->
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-lg">
+            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-xl">
               🎵
             </div>
             <div class="text-left">
@@ -43,20 +49,29 @@ const instagramImage = `${base}img/twoaway-instagram-post.jpg`;
               <p class="text-sm font-semibold text-slate-900">@twoaway</p>
             </div>
           </div>
-          <span class="text-[11px] px-2 py-1 rounded-full bg-slate-100 text-slate-600">
+
+          <span class="text-[11px] px-3 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
             Short-form • Tippek
           </span>
         </div>
 
-        <div class="rounded-3xl overflow-hidden border border-slate-200 bg-black aspect-square">
+        <!-- Thumbnail -->
+        <div class="relative rounded-3xl overflow-hidden border border-slate-200 aspect-square">
           <img
             src={tiktokImage}
             alt="TikTok tartalom"
-            class="w-full h-full object-cover group-hover:scale-[1.02] transition"
+            class="w-full h-full object-cover transition group-hover:scale-105"
             loading="lazy"
           />
+          <!-- Play overlay -->
+          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <div class="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center text-2xl shadow-lg">
+              ▶
+            </div>
+          </div>
         </div>
 
+        <!-- Text -->
         <div class="mt-4 text-left space-y-1">
           <p class="text-sm font-semibold text-slate-900">
             Last minute city break valós árakon
@@ -65,17 +80,25 @@ const instagramImage = `${base}img/twoaway-instagram-post.jpg`;
             Rövid videó, ahol azonnal láthatod a tényleges költségeket.
           </p>
         </div>
+
+        <!-- CTA -->
+        <div class="mt-4">
+          <span class="inline-block text-sm font-semibold text-sky-700 group-hover:underline">
+            Kövess TikTokon →
+          </span>
+        </div>
       </a>
 
-      <!-- Instagram -->
-      <a
+      <!-- Instagram kártya -->
+      <a 
         href={instagramUrl}
         target="_blank"
-        class="group block rounded-[32px] bg-white border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition"
+        class="group block rounded-[32px] bg-white/80 backdrop-blur-xl border border-white/40 
+               p-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition"
       >
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-lg">
+            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-xl">
               📸
             </div>
             <div class="text-left">
@@ -83,32 +106,46 @@ const instagramImage = `${base}img/twoaway-instagram-post.jpg`;
               <p class="text-sm font-semibold text-slate-900">@twoaway</p>
             </div>
           </div>
-          <span class="text-[11px] px-2 py-1 rounded-full bg-slate-100 text-slate-600">
+
+          <span class="text-[11px] px-3 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
             Carousel • Tippek
           </span>
         </div>
 
-        <div class="rounded-3xl overflow-hidden border border-slate-200 bg-black aspect-square">
+        <div class="relative rounded-3xl overflow-hidden border border-slate-200 aspect-square">
           <img
             src={instagramImage}
             alt="Instagram tartalom"
-            class="w-full h-full object-cover group-hover:scale-[1.02] transition"
+            class="w-full h-full object-cover transition group-hover:scale-105"
             loading="lazy"
           />
+          <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+            <div class="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center text-2xl shadow-lg">
+              ▶
+            </div>
+          </div>
         </div>
 
         <div class="mt-4 text-left space-y-1">
           <p class="text-sm font-semibold text-slate-900">
-            3 napos útiterv egy városnézéshez
+            3 napos útiterv városnézéshez
           </p>
           <p class="text-xs text-slate-500">
             Menthető carousel hasznos infókkal és ajánlásokkal.
           </p>
         </div>
+
+        <div class="mt-4">
+          <span class="inline-block text-sm font-semibold text-sky-700 group-hover:underline">
+            Kövess Instagramon →
+          </span>
+        </div>
       </a>
+
     </div>
 
-    <p class="text-xs md:text-sm text-slate-400 pt-4">
+    <!-- Lábjegyzet -->
+    <p class="text-xs md:text-sm text-white/60 pt-4">
       TikTok: @twoaway • Instagram: @twoaway
     </p>
   </div>

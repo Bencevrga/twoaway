@@ -7,71 +7,90 @@ const offers = [
     subtitle: "Kappadókia, ***-os szállással, reggelivel",
     image:
       "https://images.unsplash.com/photo-1526481280695-3c687fd543c3?auto=format&fit=crop&w=1400&q=80",
+    badge: "Top választás",
+    tags: ["🛫 Budapest", "⏱ 5-7 nap", "🏜 Kaland & városnézés"],
   },
   {
     title: "1 hetes nyárkezdet Zakynthoson",
     subtitle: "***-os, medencés szállással",
     image:
       "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+    badge: "Új",
+    tags: ["🏖 Tengerpart", "⏱ 7 nap"],
   },
   {
     title: "Félpanziós nyaralás Törökországban",
     subtitle: "Kusadasi, indulás Bécsből, ***-os, medencés szállással",
     image:
       "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&w=1200&q=80",
+    badge: "Last minute",
+    tags: ["🛫 Bécs", "🏖 Tengerpart"],
   },
   {
     title: "5 éjszakás mediterrán pihenés",
     subtitle: "Costa Blanca, ****-os szállással",
     image:
       "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&q=80",
+    tags: ["🌅 Mediterrán hangulat", "⏱ 5 éj"],
   },
   {
     title: "5 éjszaka a Tátra kapujában",
     subtitle: "Zakopane, bécsi indulással, hangulatos szállással",
     image:
       "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+    tags: ["⛰ Hegyek", "❄ Kirándulás"],
   },
 ];
 ---
 
 <section class="w-full py-16" id="offers">
   <div class="max-w-[1400px] mx-auto px-4">
-    <div class="flex items-center justify-between mb-10">
-      <h2 class="text-5xl font-bold text-center flex-1">
+
+    <!-- HEADER (egyszerűsítve, árkalkuláció teljesen törölve) -->
+    <div class="mb-10">
+      <h2 class="text-4xl md:text-5xl font-semibold text-white">
         Legfrissebb ajánlataink
       </h2>
-
-      <a
-        class="text-sm text-slate-600 hover:underline ml-4 whitespace-nowrap"
-      >
-        Hogyan számoljuk az árakat?
-      </a>
+      <p class="mt-2 text-sm md:text-base text-white/80 max-w-xl">
+        Friss inspirációk a legnépszerűbb úti célokra – tengerparttól
+        a városnézésig.
+      </p>
+      <p class="mt-1 text-xs text-white/60">
+        Frissítve: ma • Hetente új válogatások
+      </p>
     </div>
 
-    <!-- GRID – négyzetes layout -->
+    <!-- GRID -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- NAGY 2x2 KÁRTYA -->
+
+      <!-- NAGY 2x2 -->
       <div class="col-span-2 row-span-2 aspect-square">
         <OfferCard {...offers[0]} />
       </div>
 
-      <!-- 3 KIS NÉGYZET -->
+      <!-- 3 KIS -->
       {offers.slice(1, 4).map((offer) => (
         <div class="aspect-square">
           <OfferCard {...offer} />
         </div>
       ))}
 
-      <!-- JOBB ALSÓ – CTA NÉGYZET -->
+      <!-- JOBB ALSÓ CTA -->
       <div class="aspect-square">
         <a
           href="/utak"
-          class="w-full h-full flex items-center justify-center bg-sky-600 hover:bg-sky-700 rounded-3xl text-white font-semibold text-lg cursor-pointer transition"
+          class="w-full h-full flex flex-col items-center justify-center rounded-3xl 
+          bg-gradient-to-br from-brand to-sky-500 text-white font-medium text-base sm:text-lg 
+          cursor-pointer shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-transform"
         >
-          További ajánlatok →
+          <span class="text-2xl mb-1">✨</span>
+          <span class="mb-1">További ajánlatok</span>
+          <span class="text-xs sm:text-sm text-white/85">
+            Nézd meg az összes aktuális útiötletünket →
+          </span>
         </a>
       </div>
+
     </div>
   </div>
 </section>

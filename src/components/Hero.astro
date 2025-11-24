@@ -1,31 +1,45 @@
 ---
 const {
   title = "Találd meg a következő álomutadat",
-  subtitle = "Keretedhez és stílusodhoz szabott útitervek – valós árakkal.",
+  subtitle = "Inspirációtól a megvalósításig.",
 } = Astro.props;
 ---
 
-<section class="relative h-dvh w-full flex flex-col items-center justify-center text-center">
-  <div class="relative z-10 text-white max-w-3xl mx-auto px-4 text-center">
-    <h1 class="text-4xl sm:text-6xl font-extrabold drop-shadow">
+<section
+  class="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+>
+  <div
+    class="relative z-10 max-w-3xl mx-auto px-4 pt-24 pb-16 text-center text-white"
+  >
+    <h1
+      class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight drop-shadow"
+    >
       {title}
     </h1>
-    <p class="mt-4 text-lg sm:text-xl text-white/90">
+
+    <p
+      class="mt-5 max-w-xl mx-auto text-base sm:text-lg md:text-xl text-white/90 font-light"
+    >
       {subtitle}
     </p>
+
     <div class="mt-8 flex flex-wrap justify-center gap-3">
       <a
         href="#trips"
-        class="inline-flex rounded-2xl bg-brand px-5 py-3 text-white hover:bg-brand-dark"
+        class="inline-flex items-center justify-center rounded-full bg-brand px-7 py-3 text-sm sm:text-base font-medium text-white shadow-lg shadow-brand/40 transition-transform transition-shadow hover:-translate-y-[1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
       >
-        Böngészés
+        Felfedezés
       </a>
       <a
         href="/contact"
-        class="inline-flex rounded-2xl border border-white/40 px-5 py-3 text-white hover:bg-white/10"
+        class="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/5 px-7 py-3 text-sm sm:text-base font-medium text-white/90 backdrop-blur-sm transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
       >
         Ajánlatkérés
       </a>
     </div>
+
+    <p class="mt-4 text-xs sm:text-sm text-white/70">
+      Nem foglalunk helyetted – csak segítünk megtalálni a legjobb lehetőségeket.
+    </p>
   </div>
 </section>

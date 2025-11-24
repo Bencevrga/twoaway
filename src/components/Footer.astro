@@ -1,6 +1,146 @@
-<footer class="mt-16 border-t border-slate-200">
-<div class="container py-10 text-sm text-slate-600 grid gap-4 sm:grid-cols-2">
-<p>© {new Date().getFullYear()} TwoAway. Minden jog fenntartva.</p>
-<p class="sm:text-right">Kövess: <a href="https://tiktok.com/@twoaway" class="hover:text-brand">TikTok</a> • <a href="https://instagram.com/twoaway" class="hover:text-brand">Instagram</a></p>
-</div>
+---
+const base = import.meta.env.BASE_URL;
+const logo = `${base}img/twoaway-logo-white.svg`;
+---
+
+<footer class="mt-24 border-t border-white/10 bg-black/40 backdrop-blur-2xl text-white/80">
+  <div class="container mx-auto px-4 py-12 md:py-14 space-y-10">
+
+    <!-- Felső rész – mini CTA + brand üzenet -->
+    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div class="space-y-3 max-w-xl">
+        <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-[11px] font-semibold text-sky-200 border border-white/20">
+          <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+          Útiterv, valódi árakon
+        </p>
+        <h3 class="text-2xl font-semibold text-white">
+          Segítünk megtalálni a következő álomutadat – a valós költségekkel.
+        </h3>
+        <p class="text-sm text-white/70">
+          Nem klasszikus utazási iroda vagyunk, hanem utazóbarát, transzparens tervező partner.  
+          Nem foglalunk helyetted – csak segítünk megtalálni a legjobb lehetőségeket.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-stretch gap-3">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-2xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 hover:bg-brand-dark transition"
+        >
+          Kérj személyre szabott útitervet →
+        </a>
+        <a
+          href="/premium"
+          class="inline-flex items-center justify-center rounded-2xl border border-white/50 bg-white/5 px-5 py-3 text-sm font-semibold text-white/90 hover:bg-white/10 transition"
+        >
+          Nézd meg a prémium csoportot
+        </a>
+      </div>
+    </div>
+
+    <!-- Középső rész – oszlopok -->
+    <div
+      class="grid gap-10 md:grid-cols-4 rounded-[32px] bg-white/5 border border-white/15 
+             px-6 py-8 md:px-8 md:py-9 backdrop-blur-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)]"
+    >
+      <!-- Brand / leírás -->
+      <div class="space-y-4 md:col-span-1">
+        <div class="flex items-center gap-3">
+          {logo ? (
+            <img src={logo} alt="TwoAway logó" class="h-7 object-contain" loading="lazy" />
+          ) : (
+            <span class="text-lg font-semibold tracking-wide text-white">TwoAway</span>
+          )}
+        </div>
+        <p class="text-xs text-white/70 leading-relaxed">
+          TwoAway – egyedi útitervek, valós árak, kényelmes szervezés.  
+          Repjegy + szállás ajánlatok, inspiráció és valós költségek egy helyen.
+        </p>
+
+        <!-- Social linkek -->
+        <div class="flex gap-3 pt-1">
+          <a
+            href="https://www.tiktok.com/@twoaway"
+            target="_blank"
+            class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-3 py-1 text-[11px] text-sky-100 hover:bg-white/15 transition"
+          >
+            🎵 TikTok
+          </a>
+          <a
+            href="https://www.instagram.com/twoaway"
+            target="_blank"
+            class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-3 py-1 text-[11px] text-sky-100 hover:bg-white/15 transition"
+          >
+            📸 Instagram
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigáció -->
+      <div class="space-y-3 text-left">
+        <h4 class="text-sm font-semibold text-white">Oldalak</h4>
+        <nav class="space-y-1.5 text-sm text-white/75">
+          <a href="/" class="block hover:text-white transition">Főoldal</a>
+          <a href="/utak" class="block hover:text-white transition">Utak</a>
+          <a href="/ebook" class="block hover:text-white transition">E-book</a>
+          <a href="/arak" class="block hover:text-white transition">Árak</a>
+          <a href="/partnerek" class="block hover:text-white transition">Partnerek</a>
+          <a href="/blog" class="block hover:text-white transition">Blog</a>
+        </nav>
+      </div>
+
+      <!-- Szolgáltatások -->
+      <div class="space-y-3 text-left">
+        <h4 class="text-sm font-semibold text-white">Szolgáltatások</h4>
+        <div class="space-y-1.5 text-sm text-white/75">
+          <a href="/premium" class="block hover:text-white transition">
+            Prémium ajánlatcsoport
+          </a>
+          <a href="/tervezes" class="block hover:text-white transition">
+            Személyre szabott utazástervezés
+          </a>
+          <a href="/utasbiztositas" class="block hover:text-white transition">
+            Utasbiztosítási partner
+          </a>
+          <a href="/gyik" class="block hover:text-white transition">
+            Gyakori kérdések
+          </a>
+        </div>
+      </div>
+
+      <!-- Kapcsolat / jogi -->
+      <div class="space-y-4 text-left text-sm">
+        <div class="space-y-1.5">
+          <h4 class="text-sm font-semibold text-white">Kapcsolat</h4>
+          <p class="text-xs text-white/70">
+            Kérdésed van, vagy útitervet szeretnél?  
+            Írj nekünk bizalommal.
+          </p>
+          <a
+            href="mailto:hello@twoaway.hu"
+            class="inline-flex text-xs font-medium text-sky-200 hover:text-sky-100 transition"
+          >
+            hello@twoaway.hu
+          </a>
+        </div>
+
+        <div class="space-y-1.5 text-xs text-white/60">
+          <a href="/aszf" class="block hover:text-white transition">Általános szerződési feltételek</a>
+          <a href="/adatvedelem" class="block hover:text-white transition">Adatkezelési tájékoztató</a>
+          <a href="/cookie" class="block hover:text-white transition">Cookie beállítások</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alsó sor -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-white/60">
+      <p>
+        © {new Date().getFullYear()} TwoAway. Minden jog fenntartva.
+      </p>
+      <p class="text-[11px] text-white/50">
+        Nem végzünk repülőjegy- és szállásfoglalást – ajánlataink információs jellegűek, a
+        foglalás minden esetben a hivatalos szolgáltatónál történik.
+      </p>
+    </div>
+  </div>
 </footer>

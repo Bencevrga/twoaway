@@ -1,58 +1,65 @@
----
-const base = import.meta.env.BASE_URL;
----
-
-<section class="w-full py-20 bg-gradient-to-b from-white to-sky-50">
-  <div class="container max-w-4xl mx-auto text-center space-y-6">
-
+<section class="w-full py-20">
+  <div class="max-w-5xl mx-auto px-4 text-center">
     <!-- FŐ CÍM -->
-    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-white">
       Mit csinálunk valójában?
     </h2>
 
-    <!-- KIEMELT KÁRTYA -->
-    <div class="bg-white shadow-lg rounded-3xl border border-slate-200 p-8 md:p-10 space-y-6">
-      <p class="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed">
+    <!-- KIEMELT GLASS KÁRTYA -->
+    <div
+      class="mx-auto max-w-4xl rounded-[2rem] bg-white/85 border border-white/70 
+             shadow-xl backdrop-blur-md px-6 sm:px-10 py-8 sm:py-10 space-y-6"
+    >
+      <p class="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900 leading-relaxed">
         Nem klasszikus utazási iroda vagyunk, hanem egy
-        <span class="text-brand font-bold">utazóbarát, transzparens tervező partner</span>.
+        <span class="text-brand"> utazóbarát, független tervező partner</span>.
       </p>
 
-      <p class="text-base md:text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">
-        A célunk, hogy segítsünk eljutni a lehető legjobb helyekre –  
-        <span class="font-medium text-slate-800">valódi árakon, rejtett költségek nélkül</span>.
-        Utazásszervezésünket két fő szolgáltatásra építettük, hogy mindenki
-        megtalálja a számára legkényelmesebb módot.
+      <p class="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-3xl mx-auto">
+        Abban segítünk, hogy a keretedből a lehető legtöbbet hozd ki – 
+        <span class="font-medium text-slate-900">valódi, most is foglalható árak</span> alapján,
+        rejtett költségek nélkül. Két fő szolgáltatásunk van, hogy mindenki megtalálja
+        a számára legkényelmesebb utat.
       </p>
 
       <!-- Két fő szolgáltatás vizuális kiemelése -->
-      <div class="grid md:grid-cols-2 gap-6 pt-4">
-  <!-- Prémium ajánlatcsoport kártya -->
-  <a
-    href="#premium-service"
-    class="rounded-2xl border border-sky-200 bg-sky-50/60 p-6 space-y-3 block cursor-pointer transition hover:shadow-md hover:-translate-y-0.5"
-  >
-    <h3 class="text-lg md:text-xl font-semibold text-sky-700">
-      Prémium ajánlatcsoport
-    </h3>
-    <p class="text-sm md:text-base text-slate-700 leading-relaxed">
-      Válogatott, valós árú repülő + szállás ajánlatok hetente többször.
-    </p>
-  </a>
+      <div class="mt-6 grid md:grid-cols-2 gap-5 text-left">
+        <!-- Prémium ajánlatcsoport kártya -->
+        <a
+          href="#premium-service"
+          class="block cursor-pointer rounded-2xl border border-sky-100 bg-sky-50/80 
+                 px-5 py-5 space-y-3 shadow-sm transition-transform hover:-translate-y-[2px] hover:shadow-md"
+        >
+          <div class="flex items-center gap-2 text-sm font-medium text-sky-700">
+            <span class="text-lg">✨</span>
+            <span>Prémium ajánlatcsoport</span>
+          </div>
+          <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed">
+            Válogatott, valós árú repülő + szállás ajánlatok, rendszeresen frissítve.
+            Ideális, ha inspirációt keresel, és szeretsz kész csomagokból választani.
+          </p>
+        </a>
 
-  <!-- Személyre szabott tervezés kártya -->
-  <a
-    href="#custom-service"
-    class="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6 space-y-3 block cursor-pointer transition hover:shadow-md hover:-translate-y-0.5"
-  >
-    <h3 class="text-lg md:text-xl font-semibold text-emerald-700">
-      Személyre szabott tervezés
-    </h3>
-    <p class="text-sm md:text-base text-slate-700 leading-relaxed">
-      Teljesen rád szabott útiterv, egyéni árazással, kapcsolatfelvétel után.
-    </p>
-  </a>
-</div>
+        <!-- Személyre szabott tervezés kártya -->
+        <a
+          href="#custom-service"
+          class="block cursor-pointer rounded-2xl border border-emerald-100 bg-emerald-50/80 
+                 px-5 py-5 space-y-3 shadow-sm transition-transform hover:-translate-y-[2px] hover:shadow-md"
+        >
+          <div class="flex items-center gap-2 text-sm font-medium text-emerald-700">
+            <span class="text-lg">🎯</span>
+            <span>Személyre szabott tervezés</span>
+          </div>
+          <p class="text-sm sm:text-[15px] text-slate-700 leading-relaxed">
+            Teljesen rád szabott útiterv, egyéni árazással, rövid egyeztetés után.
+            Akkor jó, ha van elképzelésed, de nem akarsz órákat keresgélni.
+          </p>
+        </a>
+      </div>
+
+      <p class="mt-4 text-xs sm:text-sm text-slate-500">
+        Nem tudod, melyik való neked? Írj nekünk, segítünk eldönteni.
+      </p>
     </div>
-
   </div>
 </section>

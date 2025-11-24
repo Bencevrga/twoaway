@@ -6,8 +6,8 @@ const {
 
 // Astro BASE_URL (lokálisan "/" , GitHub Pages-en "/twoaway")
 const base = import.meta.env.BASE_URL || "/";
-// biztos, hogy egyetlen "/" van a végén
 const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
+
 // itt lesznek a képek: /img/...
 const imgBase = `${normalizedBase}/img`;
 ---
@@ -20,16 +20,22 @@ const imgBase = `${normalizedBase}/img`;
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    <!-- Favicon a public/img-ből, NINCS import, csak sima path -->
     <link rel="icon" type="image/svg+xml" href={`${imgBase}/favicon.svg`} />
     <meta property="og:image" content={`${imgBase}/og-twoaway.jpg`} />
   </head>
 
-  <!-- Itt állítjuk be a teljes oldal háttérképét -->
   <body
-    class="min-h-screen text-slate-900"
+    class="relative min-h-screen text-slate-900"
     style={`background: url('${imgBase}/hero.jpg') center/cover fixed no-repeat;`}
   >
-    <slot />
+    {/* UGYANAZ A GRADIENT, mint a Hero kódban */}
+    <div
+      class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-brand/30 via-slate-900/80 to-sky-500/20"
+    ></div>
+
+    {/* Tartalom a gradient fölött */}
+    <div class="relative z-10">
+      <slot />
+    </div>
   </body>
 </html>
