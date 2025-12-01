@@ -1,4 +1,7 @@
 ---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
 const {
   title = "TwoAway – Utazás okosan",
   description = "Egyedi útitervek, valós árak, kényelmes szervezés.",
@@ -28,14 +31,20 @@ const imgBase = `${normalizedBase}/img`;
     class="relative min-h-screen text-slate-900"
     style={`background: url('${imgBase}/hero.jpg') center/cover fixed no-repeat;`}
   >
-    {/* UGYANAZ A GRADIENT, mint a Hero kódban */}
+    {/* Háttér gradient az egész oldalra */}
     <div
       class="pointer-events-none absolute inset-0 z-0 bg-gradient-to-br from-brand/30 via-slate-900/80 to-sky-500/20"
     ></div>
 
-    {/* Tartalom a gradient fölött */}
-    <div class="relative z-10">
-      <slot />
+    {/* Tartalom a gradient fölött: NAVBAR + PAGE + FOOTER */}
+    <div class="relative z-10 flex min-h-screen flex-col">
+      <Navbar />
+
+      <main class="flex-1 pt-20 md:pt-24">
+        <slot />
+      </main>
+
+      <Footer />
     </div>
   </body>
 </html>

@@ -1,0 +1,316 @@
+---
+import BaseLayout from "../layouts/Base.astro";
+import { createClient } from "@sanity/client";
+
+const client = createClient({
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+  dataset: "production",
+  apiVersion: "2025-01-01",
+  useCdn: true,
+});
+
+const currentTrips = await client.fetch(`
+  *[_type == "currentTrip"] | order(orderRank asc) {
+    title,
+    location,
+    days,
+    highlight,
+    fromPrice,
+    tag,
+    "image": image.asset->url
+  }
+`);
+
+const pastTrips = await client.fetch(`
+  *[_type == "pastTrip"] | order(date desc) {
+    title,
+    location,
+    days,
+    date,
+    price,
+    detail,
+    "image": image.asset->url
+  }
+`);
+
+const base = import.meta.env.BASE_URL || "/";
+---
+
+
+<BaseLayout
+  title="Utak – TwoAway"
+  description="Valós példautak a TwoAway prémium ajánlatcsoportjából."
+>
+  <main class="w-full pb-24">
+
+    <!-- FELSŐ HERO KÁRTYA -->
+    <section class="pt-32 md:pt-36 pb-16">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div
+          class="rounded-[40px] bg-white/95 border border-slate-200 shadow-[0_24px_80px_rgba(15,23,42,0.35)] px-6 py-8 md:px-10 md:py-10 space-y-6"
+        >
+          <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-1 text-sky-700 border border-sky-100"
+            >
+              <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+              Utak a prémium ajánlatcsoportból
+            </span>
+            <span class="text-slate-400">
+              {currentTrips.length} aktuális példaút • {pastTrips.length} korábbi, valós árú út
+            </span>
+          </div>
+
+          <div class="space-y-4 max-w-3xl">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">
+              Valós példautak – mind a prémium csoportból.
+            </h1>
+            <p class="text-sm md:text-base text-slate-700 leading-relaxed">
+              Az alábbi utak mind a TwoAway prémium ajánlatcsoportjából származnak.
+              Az aktuális ajánlatok részletei kizárólag a csoporttagoknak érhetők el – 
+              a korábbi, lejárt utaknál pedig valós árakat is mutatunk inspirációként.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={`${base}premium/`}
+              class="inline-flex items-center justify-center rounded-2xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 hover:bg-brand-dark transition"
+            >
+              Csatlakozom a prémium csoporthoz →
+            </a>
+            <a
+              href={`${base}contact/`}
+              class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-slate-50 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition"
+            >
+              Kérek személyre szabott útitervet
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AKTUÁLIS UTAK -->
+    <section class="pb-20">
+      <div class="container mx-auto px-4 max-w-6xl space-y-8">
+
+        <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div class="space-y-2">
+            <p class="text-xs font-semibold tracking-wide uppercase text-sky-200">
+              Aktuális, csak prémium csoportban elérhető példák
+            </p>
+            <h2 class="text-2xl md:text-3xl font-semibold text-white drop-shadow">
+              Aktuális utak a prémium csoportból
+            </h2>
+            <p class="text-sm text-slate-100/90 max-w-xl">
+              Ezek a példák mutatják, milyen típusú ajánlatokat kapsz tőlünk:
+              friss repjegy + szállás kombinációk, valós ártartományban,
+              különböző hangulatú utazásokhoz.
+            </p>
+          </div>
+
+          <!-- “Filter” chip-ek – jelenleg csak vizuálisak -->
+          <div
+            class="inline-flex items-center gap-2 rounded-full bg-slate-900/60 border border-white/10 backdrop-blur px-3 py-2 text-[11px] text-slate-100/90 shadow-[0_10px_30px_rgba(15,23,42,0.65)]"
+          >
+            <span class="mr-1 hidden sm:inline opacity-80">
+              Szűrés típus szerint (hamarosan):
+            </span>
+            <button
+              type="button"
+              class="rounded-full bg-white text-slate-900 px-3 py-1 font-semibold text-[11px] shadow-sm"
+            >
+              Összes út
+            </button>
+            <button
+              type="button"
+              class="rounded-full bg-white/10 text-slate-100 px-3 py-1 font-medium hover:bg-white/20 transition"
+            >
+              City break
+            </button>
+            <button
+              type="button"
+              class="rounded-full bg-white/10 text-slate-100 px-3 py-1 font-medium hover:bg-white/20 transition"
+            >
+              Tengerpart
+            </button>
+          </div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {currentTrips.map((trip: any) => (
+            <a
+              href={`${base}premium/`}
+              class="group flex flex-col rounded-[28px] bg-white/95 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition overflow-hidden"
+            >
+              <!-- kép -->
+              <div class="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={trip.image}
+                  alt={trip.title}
+                  loading="lazy"
+                  class="w-full h-full object-cover group-hover:scale-105 transition"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
+
+                <div class="absolute bottom-3 left-3 right-3 flex flex-col gap-1">
+                  <span
+                    class="inline-flex items-center gap-1.5 rounded-full bg-amber-100/95 px-3 py-1 text-[11px] font-semibold text-amber-800 w-fit shadow-sm"
+                  >
+                    <span>★</span> Friss prémium ajánlat
+                  </span>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <p class="text-[11px] text-white/80">
+                      {trip.location} • {trip.days}
+                    </p>
+                    <span class="inline-flex items-center rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/90">
+                      {trip.tag === "city" ? "City break" : "Tengerpart"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- szöveg -->
+              <div class="p-4 md:p-5 flex flex-col gap-2">
+                <h3 class="text-sm md:text-base font-semibold text-slate-900">
+                  {trip.title}
+                </h3>
+                <p class="text-xs text-slate-600">
+                  {trip.highlight}
+                </p>
+                <p class="mt-1 text-xs font-semibold text-sky-700">
+                  {trip.fromPrice} – pontos ár és linkek a prémium csoportban.
+                </p>
+                <p class="mt-2 text-[11px] text-slate-500">
+                  Kattints, és a prémium oldalon mutatjuk a konkrét dátumokat,
+                  járatokat és szállásopciókat.
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="flex justify-center pt-4">
+          <a
+            href={`${base}premium/`}
+            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/90 px-5 py-2 text-xs font-semibold text-slate-700 hover:bg-white transition shadow-sm"
+          >
+            Összes részlet a prémium oldalon →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEJÁRT UTAK KÁRTYÁBAN -->
+    <section class="pb-20">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div
+          class="rounded-[40px] bg-white/95 border border-slate-200 shadow-[0_24px_80px_rgba(15,23,42,0.35)] px-6 py-10 md:px-10 md:py-12 space-y-8"
+        >
+          <div class="space-y-3 max-w-3xl">
+            <div class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-1 text-[11px] font-semibold text-slate-700">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              Korábbi ajánlataink – valós árakkal
+            </div>
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">
+              Lejárt utak, valós példákkal és tényleges költségekkel.
+            </h2>
+            <p class="text-sm text-slate-700">
+              Ezek az utak már nem foglalhatók, viszont jól mutatják, milyen
+              ártartományban dolgozunk különböző úti célokra – hogy legyen
+              egy reális képed, mibe kerül egy hasonló utazás.
+            </p>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {pastTrips.map((trip: any) => (
+              <div
+                class="flex flex-col rounded-[28px] bg-white border border-slate-200 shadow-sm overflow-hidden"
+              >
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={trip.image}
+                    alt={trip.title}
+                    loading="lazy"
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+                    <span
+                      class="rounded-full bg-amber-100/95 px-3 py-1 text-[11px] font-semibold text-amber-800 shadow-sm"
+                    >
+                      Lejárt ajánlat
+                    </span>
+                    <span
+                      class="rounded-full bg-white/90 px-3 py-1 text-[11px] text-slate-700"
+                    >
+                      {trip.date}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-4 md:p-5 flex flex-col gap-2">
+                  <p class="text-[11px] uppercase tracking-wide text-slate-500">
+                    {trip.location} • {trip.days}
+                  </p>
+                  <h3 class="text-sm md:text-base font-semibold text-slate-900">
+                    {trip.title}
+                  </h3>
+                  <p class="text-xs text-slate-600">
+                    {trip.detail}
+                  </p>
+                  <p class="mt-2 text-sm font-semibold text-slate-900">
+                    Végső ár:{" "}
+                    <span class="text-sky-700">{trip.price}</span>
+                  </p>
+                  <p class="text-[11px] text-slate-500 mt-1">
+                    Az ár tartalmazta a repjegyet és a szállást – a pontos
+                    bontást akkor a prémium csoportban mutattuk.
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALSÓ CTA KÁRTYA -->
+    <section class="pb-10">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div
+          class="rounded-[40px] bg-white/95 border border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.4)] px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+        >
+          <div class="space-y-2 max-w-xl">
+            <p class="text-xs font-semibold text-sky-600 uppercase tracking-wide">
+              Következő lépés
+            </p>
+            <h3 class="text-xl md:text-2xl font-semibold text-slate-900">
+              Szeretnél hasonló árú utakat a saját igényeidre szabva?
+            </h3>
+            <p class="text-sm text-slate-700">
+              A prémium csoportban folyamatosan érkeznek az új ajánlatok, a
+              személyre szabott tervezéssel pedig teljesen rád igazítjuk az útitervedet – 
+              időponttal, kerettel és hangulattal együtt.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <a
+              href={`${base}premium/`}
+              class="flex-1 inline-flex items-center justify-center rounded-2xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 hover:bg-brand-dark transition"
+            >
+              Megnézem a prémium csoportot
+            </a>
+            <a
+              href={`${base}contact/`}
+              class="flex-1 inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-slate-50 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition"
+            >
+              Kérek személyre szabott útitervet
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

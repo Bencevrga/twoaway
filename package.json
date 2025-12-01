@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.5",
+    "@sanity/client": "^7.13.1",
+    "astro": "^5.16.0",
     "iconify-icon": "^3.0.2"
   },
   "devDependencies": {

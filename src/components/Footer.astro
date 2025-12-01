@@ -38,21 +38,21 @@ const logo = `${base}img/twoaway-logo-white.svg`;
       </div>
     </div>
 
-    <!-- Középső rész – oszlopok -->
+    <!-- Középső rész – FEHÉR KÁRTYA (ez lett frissítve) -->
     <div
-      class="grid gap-10 md:grid-cols-4 rounded-[32px] bg-white/5 border border-white/15 
-             px-6 py-8 md:px-8 md:py-9 backdrop-blur-2xl shadow-[0_18px_45px_rgba(0,0,0,0.45)]"
+      class="grid gap-10 md:grid-cols-4 rounded-[32px] bg-white border border-slate-200 
+             px-6 py-8 md:px-8 md:py-9 shadow-[0_18px_45px_rgba(0,0,0,0.15)] text-slate-800"
     >
       <!-- Brand / leírás -->
       <div class="space-y-4 md:col-span-1">
         <div class="flex items-center gap-3">
           {logo ? (
-            <img src={logo} alt="TwoAway logó" class="h-7 object-contain" loading="lazy" />
+            <img src={logo} alt="TwoAway logó" class="h-7 object-contain brightness-0 invert" loading="lazy" />
           ) : (
-            <span class="text-lg font-semibold tracking-wide text-white">TwoAway</span>
+            <span class="text-lg font-semibold tracking-wide text-slate-900">TwoAway</span>
           )}
         </div>
-        <p class="text-xs text-white/70 leading-relaxed">
+        <p class="text-xs text-slate-700 leading-relaxed">
           TwoAway – egyedi útitervek, valós árak, kényelmes szervezés.  
           Repjegy + szállás ajánlatok, inspiráció és valós költségek egy helyen.
         </p>
@@ -62,14 +62,14 @@ const logo = `${base}img/twoaway-logo-white.svg`;
           <a
             href="https://www.tiktok.com/@twoaway"
             target="_blank"
-            class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-3 py-1 text-[11px] text-sky-100 hover:bg-white/15 transition"
+            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-slate-100 px-3 py-1 text-[11px] text-slate-800 hover:bg-slate-200 transition"
           >
             🎵 TikTok
           </a>
           <a
             href="https://www.instagram.com/twoaway"
             target="_blank"
-            class="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/5 px-3 py-1 text-[11px] text-sky-100 hover:bg-white/15 transition"
+            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-slate-100 px-3 py-1 text-[11px] text-slate-800 hover:bg-slate-200 transition"
           >
             📸 Instagram
           </a>
@@ -78,31 +78,31 @@ const logo = `${base}img/twoaway-logo-white.svg`;
 
       <!-- Navigáció -->
       <div class="space-y-3 text-left">
-        <h4 class="text-sm font-semibold text-white">Oldalak</h4>
-        <nav class="space-y-1.5 text-sm text-white/75">
-          <a href="/" class="block hover:text-white transition">Főoldal</a>
-          <a href="/utak" class="block hover:text-white transition">Utak</a>
-          <a href="/ebook" class="block hover:text-white transition">E-book</a>
-          <a href="/arak" class="block hover:text-white transition">Árak</a>
-          <a href="/partnerek" class="block hover:text-white transition">Partnerek</a>
-          <a href="/blog" class="block hover:text-white transition">Blog</a>
+        <h4 class="text-sm font-semibold text-slate-900">Oldalak</h4>
+        <nav class="space-y-1.5 text-sm text-slate-700">
+          <a href="/" class="block hover:text-slate-900 transition">Főoldal</a>
+          <a href="/utak" class="block hover:text-slate-900 transition">Utak</a>
+          <a href="/ebook" class="block hover:text-slate-900 transition">E-book</a>
+          <a href="/arak" class="block hover:text-slate-900 transition">Árak</a>
+          <a href="/partnerek" class="block hover:text-slate-900 transition">Partnerek</a>
+          <a href="/blog" class="block hover:text-slate-900 transition">Blog</a>
         </nav>
       </div>
 
       <!-- Szolgáltatások -->
       <div class="space-y-3 text-left">
-        <h4 class="text-sm font-semibold text-white">Szolgáltatások</h4>
-        <div class="space-y-1.5 text-sm text-white/75">
-          <a href="/premium" class="block hover:text-white transition">
+        <h4 class="text-sm font-semibold text-slate-900">Szolgáltatások</h4>
+        <div class="space-y-1.5 text-sm text-slate-700">
+          <a href="/premium" class="block hover:text-slate-900 transition">
             Prémium ajánlatcsoport
           </a>
-          <a href="/tervezes" class="block hover:text-white transition">
+          <a href="/tervezes" class="block hover:text-slate-900 transition">
             Személyre szabott utazástervezés
           </a>
-          <a href="/utasbiztositas" class="block hover:text-white transition">
+          <a href="/utasbiztositas" class="block hover:text-slate-900 transition">
             Utasbiztosítási partner
           </a>
-          <a href="/gyik" class="block hover:text-white transition">
+          <a href="/gyik" class="block hover:text-slate-900 transition">
             Gyakori kérdések
           </a>
         </div>
@@ -111,32 +111,30 @@ const logo = `${base}img/twoaway-logo-white.svg`;
       <!-- Kapcsolat / jogi -->
       <div class="space-y-4 text-left text-sm">
         <div class="space-y-1.5">
-          <h4 class="text-sm font-semibold text-white">Kapcsolat</h4>
-          <p class="text-xs text-white/70">
+          <h4 class="text-sm font-semibold text-slate-900">Kapcsolat</h4>
+          <p class="text-xs text-slate-700">
             Kérdésed van, vagy útitervet szeretnél?  
             Írj nekünk bizalommal.
           </p>
           <a
             href="mailto:hello@twoaway.hu"
-            class="inline-flex text-xs font-medium text-sky-200 hover:text-sky-100 transition"
+            class="inline-flex text-xs font-medium text-slate-900 hover:text-slate-700 transition"
           >
             hello@twoaway.hu
           </a>
         </div>
 
-        <div class="space-y-1.5 text-xs text-white/60">
-          <a href="/aszf" class="block hover:text-white transition">Általános szerződési feltételek</a>
-          <a href="/adatvedelem" class="block hover:text-white transition">Adatkezelési tájékoztató</a>
-          <a href="/cookie" class="block hover:text-white transition">Cookie beállítások</a>
+        <div class="space-y-1.5 text-xs text-slate-600">
+          <a href="/aszf" class="block hover:text-slate-900 transition">Általános szerződési feltételek</a>
+          <a href="/adatvedelem" class="block hover:text-slate-900 transition">Adatkezelési tájékoztató</a>
+          <a href="/cookie" class="block hover:text-slate-900 transition">Cookie beállítások</a>
         </div>
       </div>
     </div>
 
     <!-- Alsó sor -->
     <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-white/60">
-      <p>
-        © {new Date().getFullYear()} TwoAway. Minden jog fenntartva.
-      </p>
+      <p>© {new Date().getFullYear()} TwoAway. Minden jog fenntartva.</p>
       <p class="text-[11px] text-white/50">
         Nem végzünk repülőjegy- és szállásfoglalást – ajánlataink információs jellegűek, a
         foglalás minden esetben a hivatalos szolgáltatónál történik.

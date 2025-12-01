@@ -1,0 +1,365 @@
+---
+import BaseLayout from "../layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+
+const plans = [
+  {
+    id: "weekend",
+    name: "Weekend Deals",
+    badge: "Belépő prémium csoport",
+    priceMonthly: "2 490 Ft / hó",
+    priceOnce: "vagy 24 900 Ft / év",
+    bestFor:
+      "Ha spontán city breakekre jársz, és csak a legolcsóbb 3–4 napos ajánlatokra vadászol.",
+    highlight:
+      "A hét legjobb rövid, olcsó európai útjai – repjeggyel és ajánlott szállással, egy helyen.",
+    includes: [
+      "Zárt Weekend Deals prémium csoport elérés",
+      "Heti 3 rövid (3–4 napos) city-break ajánlat Európán belül",
+      "Minden ajánlatnál konkrét repjegy + 1 ajánlott szállás",
+      "Reális, ellenőrzött ártartomány, hogy tudd, mire számíthatsz",
+      "Rövid, érthető leírás – kinek ajánlott az adott út, miért jó deal"
+    ],
+    extras: [
+      "Elsőként értesülsz a spontán, olcsó hétvégi lehetőségekről",
+      "Ideális, ha évente 1–2 rövid utat tervezel, és nem akarsz órákig keresgélni"
+    ],
+    featured: false,
+  },
+  {
+    id: "city-explorers",
+    name: "City Explorers",
+    badge: "Legnépszerűbb csomag",
+    priceMonthly: "4 990 Ft / hó",
+    priceOnce: "vagy 49 900 Ft / év",
+    bestFor:
+      "Ha évente többször utazol, fontos a jó ár-érték arány, és igényesebb szállásokat keresel.",
+    highlight:
+      "Kiegyensúlyozott, minőségi city-break ajánlatok több szállásopcióval és mini útitervvel.",
+    includes: [
+      "Zárt City Explorers prémium csoport elérés",
+      "Heti 4 új ajánlat (city break + tengerpart vegyesen)",
+      "Minden útnál repjegy + 2–3 szállás opció különböző árkategóriában",
+      "4–6 napos, kényelmesen bejárható útvonalak",
+      "Rövid mini útiterv – főbb látnivalók, városrész-ajánlók, közlekedési tippek"
+    ],
+    extras: [
+      "„Top pick” jelölés a hét legjobb ajánlatára",
+      "DM-ben kérdezhetsz egyszerű útvonal- vagy dátumkérdésekben (nem 0–24, de válaszolunk)",
+      "Ideális, ha évente 2–4 utat tervezel, és szeretnéd a lehető legtöbbet kihozni a keretedből"
+    ],
+    featured: true,
+  },
+  {
+    id: "luxury",
+    name: "Luxury & Long Trips",
+    badge: "Prémium utazóknak",
+    priceMonthly: "9 990 Ft / hó",
+    priceOnce: "vagy 99 900 Ft / év",
+    bestFor:
+      "Ha sokat utazol, szereted a jobb szállásokat, és érdekelnek a hosszabb, különleges útvonalak is.",
+    highlight:
+      "Luxus európai city-breakek, 7–10 napos hosszabb utak és exkluzív, limitált ajánlatok egy helyen.",
+    includes: [
+      "Zárt Luxury & Long Trips prémium csoport elérés",
+      "Heti 4 exkluzív ajánlat (luxus city break, hosszabb út, klasszikus nagyváros, last-minute deal)",
+      "Minden ajánlatnál repjegy + 3–4, jobb elhelyezkedésű szállás opció",
+      "7–10 napos, élményorientált útvonalak (pl. Jordánia, Madeira, Kanári-szigetek, Marokkó)",
+      "Bővített mini útiterv: ajánlott negyedek, programötletek, étterem- és beach-típus tippek"
+    ],
+    extras: [
+      "VIP jellegű támogatás: kérdéseidre 24 órán belül reagálunk",
+      "Ideális sokat utazó pároknak, vállalkozóknak, különleges alkalmakra szervezett utakhoz",
+      "A legjobb ajánlatokról gyakran itt értesülsz először – mielőtt bármi kikerülne TikTokra"
+    ],
+    featured: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Prémium csoportok – TwoAway"
+  description="Zárt prémium utazós csoportok három szinten: spontán weekend dealktól a luxus és hosszabb utazásokig. Válaszd ki, milyen szinten segítsünk a következő utadnál."
+>
+  <main class="w-full pb-24">
+
+    <!-- HERO KÁRTYA -->
+    <section class="pt-32 md:pt-36 pb-16">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div
+          class="rounded-[40px] bg-white/95 border border-slate-200 shadow-[0_24px_80px_rgba(15,23,42,0.35)] px-6 py-8 md:px-10 md:py-10 space-y-6"
+        >
+          <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-sky-50 px-4 py-1 text-sky-700 border border-sky-100"
+            >
+              <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+              TwoAway prémium csoportok
+            </span>
+            <span class="text-slate-400">
+              3 szint, ugyanaz a hangulat – csak válaszd ki, mennyire legyünk benne az utazásaidban.
+            </span>
+          </div>
+
+          <div class="space-y-4 max-w-3xl">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">
+              Zárt prémium csoportok – a legjobb ajánlatok a feededen túl.
+            </h1>
+            <p class="text-sm md:text-base text-slate-700 leading-relaxed">
+              A TikTokon megmutatjuk az inspirációt, a prémium csoportokban viszont megkapod a
+              <strong>konkrét, foglalásra kész ajánlatokat</strong>: repjeggyel, szállással,
+              ártartománnyal és mini útitervvel. Ha szeretnél tudatosan, de mégis lazán
+              utazni, itt találod meg a saját szintedet – a spontán weekend dealktól a
+              luxus és hosszabb utazásokig.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={`${base}utak/`}
+              class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-slate-50 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition"
+            >
+              Megnézem az aktuális példautakat
+            </a>
+            <a
+              href={`${base}contact/`}
+              class="inline-flex items-center justify-center rounded-2xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 hover:bg-brand-dark transition"
+            >
+              Jelentkezem prémium csoportra
+            </a>
+          </div>
+
+          <p class="text-[11px] text-slate-500 max-w-2xl">
+            Fontos: nem klasszikus utazási iroda vagyunk. Mi megkeressük neked a jó
+            kombinációkat és megmutatjuk, hogyan foglalj okosan – a foglalás minden
+            esetben a saját nevedre, a saját bankkártyádról történik.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CSOMAGOK -->
+    <section class="pb-20">
+      <div class="container mx-auto px-4 max-w-6xl space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <p class="text-xs font-semibold tracking-wide uppercase text-sky-200">
+            Prémium szintek
+          </p>
+          <h2 class="text-2xl md:text-3xl font-semibold text-white drop-shadow">
+            Válaszd ki, melyik TwoAway vibe illik hozzád.
+          </h2>
+          <p class="text-sm text-slate-100/90">
+            Mindhárom csoportban heti szinten küldünk friss ajánlatokat – a különbség a
+            <strong>megcélzott utazástípusban, a részletességben és a támogatás mértékében</strong> van.
+            A repjegyeket és szállásokat mindig te foglalod, mi pedig segítünk, hogy okos döntést hozz.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          {plans.map((plan) => (
+            <div
+              class={`relative flex flex-col rounded-[32px] border bg-white/95 overflow-hidden ${
+                plan.featured
+                  ? "border-sky-400 shadow-[0_24px_70px_rgba(56,189,248,0.45)] scale-[1.02]"
+                  : "border-slate-200 shadow-[0_16px_50px_rgba(15,23,42,0.35)]"
+              }`}
+            >
+              {plan.featured && (
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span class="inline-flex items-center rounded-full bg-sky-600 text-[11px] font-semibold text-white px-3 py-1 shadow-lg shadow-sky-500/40">
+                    Legnépszerűbb csomag
+                  </span>
+                </div>
+              )}
+
+              <div class="p-5 md:p-6 flex flex-col gap-3">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="space-y-1">
+                    <h3 class="text-lg font-semibold text-slate-900">
+                      {plan.name}
+                    </h3>
+                    <p class="text-[11px] uppercase tracking-wide text-slate-500">
+                      {plan.badge}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <p class="text-xl font-semibold text-slate-900">
+                    {plan.priceMonthly}
+                  </p>
+                  <p class="text-xs text-slate-500">
+                    {plan.priceOnce}
+                  </p>
+                </div>
+
+                <p class="text-xs text-slate-600">
+                  {plan.bestFor}
+                </p>
+
+                <div class="mt-2 rounded-2xl bg-sky-50 border border-sky-100 px-3 py-2">
+                  <p class="text-[11px] font-medium text-sky-900">
+                    {plan.highlight}
+                  </p>
+                </div>
+
+                <div class="mt-3 space-y-2">
+                  <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wide">
+                    Mit tartalmaz pontosan?
+                  </p>
+                  <ul class="space-y-1.5 text-xs text-slate-700">
+                    {plan.includes.map((item) => (
+                      <li class="flex gap-2">
+                        <span class="mt-[3px] h-1.5 w-1.5 rounded-full bg-sky-500 flex-shrink-0"></span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="mt-3 space-y-1.5">
+                  {plan.extras.map((extra) => (
+                    <p class="text-[11px] text-slate-500">
+                      {extra}
+                    </p>
+                  ))}
+                </div>
+
+                <div class="mt-4">
+                  <a
+                    href={`${base}contact/`}
+                    class={`inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
+                      plan.featured
+                        ? "bg-brand text-white shadow-lg shadow-brand/40 hover:bg-brand-dark"
+                        : "bg-slate-900 text-white hover:bg-slate-800"
+                    }`}
+                  >
+                    Jelentkezem erre a csoportra →
+                  </a>
+                </div>
+
+                <p class="mt-2 text-[10px] text-slate-400">
+                  A csatlakozás menete egyszerű: kitöltöd a kapcsolatfelvételi űrlapot,
+                  mi pedig válaszban elküldjük a fizetési és belépési információkat a
+                  választott prémium csoporthoz.
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- HOGYAN MŰKÖDIK BLOKK -->
+    <section class="pb-20">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div
+          class="rounded-[40px] bg-white/95 border border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.4)] px-6 py-8 md:px-10 md:py-10 space-y-8"
+        >
+          <div class="space-y-3 max-w-3xl">
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">
+              Hogyan működnek a TwoAway prémium csoportok?
+            </h2>
+            <p class="text-sm text-slate-700">
+              A célunk, hogy <strong>ne neked kelljen minden nap a repjegyes és
+              szállásos oldalakat bújnod</strong>. Mi figyeljük az árakat, kombináljuk az
+              útvonalakat, és a lényegre szűrve küldjük a legjobb opciókat – úgy, hogy
+              közben a kontroll végig nálad marad.
+            </p>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-sky-600 uppercase tracking-wide">
+                1. Lépés
+              </p>
+              <h3 class="text-sm font-semibold text-slate-900">
+                Válassz csoportot + vedd fel velünk a kapcsolatot
+              </h3>
+              <p class="text-sm text-slate-700">
+                Kiválasztod, hogy a Weekend Deals, a City Explorers vagy a Luxury &amp; Long Trips
+                áll hozzád a legközelebb, majd a kapcsolat oldalon jelzed, melyik csoporthoz
+                szeretnél csatlakozni. Válaszban elküldjük a részleteket.
+              </p>
+            </div>
+
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-sky-600 uppercase tracking-wide">
+                2. Lépés
+              </p>
+              <h3 class="text-sm font-semibold text-slate-900">
+                Belépsz a zárt csatornába
+              </h3>
+              <p class="text-sm text-slate-700">
+                A fizetés után megkapod a meghívót a zárt prémium csoportodba (pl. Telegram /
+                WhatsApp / egyéb csatorna). Innentől kezdve heti több alkalommal érkeznek a
+                friss, konkrét ajánlatok – repjeggyel, szállással, ártartománnyal.
+              </p>
+            </div>
+
+            <div class="space-y-2">
+              <p class="text-xs font-semibold text-sky-600 uppercase tracking-wide">
+                3. Lépés
+              </p>
+              <h3 class="text-sm font-semibold text-slate-900">
+                Te döntesz, mikor foglalsz – mi segítünk okosan
+              </h3>
+              <p class="text-sm text-slate-700">
+                Ha megtetszik egy ajánlat, a linkeken keresztül te foglalod le a repjegyet és a
+                szállást. A magasabb csomagszinteken segítünk alternatív dátumot találni, ha
+                drágult az ár, és válaszolunk a kérdéseidre, hogy magabiztosan dönts.
+              </p>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-slate-500 max-w-3xl">
+            Ha egy konkrét, teljesen rád szabott útra van szükséged (évforduló, szülinap,
+            ajándék utazás), a prémium csoportoktól függetlenül külön
+            <strong>személyre szabott utazástervezés</strong> szolgáltatást is kérhetsz tőlünk –
+            erről a kapcsolatfelvételnél tudsz jelezni.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALSÓ CTA -->
+    <section class="pb-10">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div
+          class="rounded-[40px] bg-white/95 border border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.4)] px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+        >
+          <div class="space-y-2 max-w-xl">
+            <p class="text-xs font-semibold text-sky-600 uppercase tracking-wide">
+              Készen állsz a következő utadra?
+            </p>
+            <h3 class="text-xl md:text-2xl font-semibold text-slate-900">
+              Csatlakozz a hozzád illő prémium csoporthoz – mi figyeljük helyetted a dealeket.
+            </h3>
+            <p class="text-sm text-slate-700">
+              Legyen szó spontán hétvégi kiruccanásról, city breakről vagy hosszabb, különleges
+              utazásról, a TwoAway prémium csoportokkal időt, energiát és pénzt spórolsz – miközben
+              nem kell napi szinten a repjegyes oldalakat vadásznod.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <a
+              href={`${base}contact/`}
+              class="flex-1 inline-flex items-center justify-center rounded-2xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 hover:bg-brand-dark transition"
+            >
+              Jelentkezem prémium csoportra
+            </a>
+            <a
+              href={`${base}utak/`}
+              class="flex-1 inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-slate-50 px-6 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition"
+            >
+              Először megnézem a példautakat
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
